@@ -1,0 +1,29 @@
+{
+  "address": "0xE2993a2C6a4993085E01565FE74078b26Ca46ac1",
+  "protocol": "V2",
+  "token0": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+  "token1": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+  "direct": "Forward",
+  "block_number": 53168778,
+  "taker_traits": "0x0",
+  "one_inch_orders": [
+    {
+      "amount_in": "0x708317b949c170a",
+      "amount_out": "0x89a6417b9eb607c8",
+      "order": {
+        "order_hash": "0x01b0e104d7a266f5ee80515f497580f32da467c667d13f50d65f649a6067c1e2",
+        "salt": "89585721554289101189759860533270712735205109413571979129784518764122656291415",
+        "maker": "0x80dedd5c9d63f6ec60d158da8fc38b5c2646a367",
+        "receiver": "0x0000000000000000000000000000000000000000",
+        "maker_asset": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+        "taker_asset": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "making_amount": "0x716f37f68a02286",
+        "remaining_making_amount": "0x716f37f68a02286",
+        "taking_amount": "0x8ac7230489e80000",
+        "maker_traits": "0x4400000000000000000000000000000000006d4524af00000000000000000000",
+        "extension": "0x",
+        "signature": "0x255951ecff1aac515c9d77875d18a4d933ddbf4079bf2f0ab09a3cb808fcc23872c6a4e6572350741435381aaaf27bb720337fa625fc4956664c4c0d977469511b"
+      }
+    }
+  ]
+}

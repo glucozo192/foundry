@@ -1,0 +1,44 @@
+{
+  "block": 53610500,
+  "swaps": [
+    {
+      "token1": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "token2": "0x3917d6bdffe43105a74e6f9c09b5206f0f3f5fc0",
+      "amount_in": "69299034956616089",
+      "pool_address": "0x84196ac042ddb84137e15d1c3ff187adad61f811",
+      "expected_amount_out": "2706174400000000000000",
+      "fee": 25,
+      "type": "PancakeV2",
+      "transaction_info": {
+        "hash": "0xd16ced4d85198a935667ed3a9a63bfcc31bf3d64c4db5068c8ea68d5267dc491",
+        "note": "Simple PancakeSwap V2 swap: BNB -> LCAT",
+        "method": "0xfb3bdb41",
+        "is_complex": false
+      }
+    }
+  ],
+  "orders": [
+    {
+      "salt": "50385345646594494343039624803047408552896229703812022067117271154840450567561",
+      "maker": "1394206392520374289130738387048570509054603654236",
+      "receiver": "0",
+      "maker_asset": "687461562185226328467339582750295277054013026321",
+      "taker_asset": "489982930986835137684486657990555633941558688085",
+      "making_amount": "8515911443129599771361",
+      "taking_amount": "948760144563027100000",
+      "maker_traits": "30757273703662114409386042892932725523524841822142666153108097753946527891456",
+      "r": "0xf17fcd5b6c469f191426298310c4623c1de65e6b3a6f84846e009039c14a3fe2",
+      "vs": "0x4d7dea33e363d57daa7f3d62dcab329d19873d2acb3811f71a92447af67e0ad5",
+      "amount": "1071818619815658352",
+      "taker_traits": "0",
+      "expected_amount_out": "9620463614279898786",
+      "expected_remaining_amount": "1520617312921602536730",
+      "transaction_info": {
+        "hash": "0x73603da8ced7921a49759c3e69b7cad24698349a8dc1d83de8c004896233f640",
+        "note": "Real BSC 1inch limit order fill",
+        "method": "0xd1dd417f",
+        "is_complex": false
+      }
+    }
+  ]
+}
