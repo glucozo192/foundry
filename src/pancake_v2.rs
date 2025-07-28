@@ -92,10 +92,6 @@ pub async fn execute_swap(config: &SwapConfig, client: &Arc<SignerClient>) -> Re
     let amount_in = U256::from_dec_str(&config.amount_in)?;
     let expected_amount_out = U256::from_dec_str(&config.expected_amount_out)?;
 
-    info!("📊 Swap Details:");
-    info!("  Amount In: {} wei ({:.6} tokens)", amount_in, amount_in.as_u128() as f64 / 1e18);
-    info!("  Expected Out: {} wei ({:.6} tokens)", expected_amount_out, expected_amount_out.as_u128() as f64 / 1e18);
-
     // Determine swap type and execute
     let token1_addr = Address::from_str(&config.token1)?;
     let token2_addr = Address::from_str(&config.token2)?;
@@ -119,8 +115,6 @@ async fn setup_router_contract(client: &Arc<SignerClient>, config: &SwapConfig) 
     let router_abi: Abi = serde_json::from_str(UNISWAP_V2_ROUTER_ABI)?;
     let router_address = Address::from_str(config.get_router_address())?;
     let contract = Contract::new(router_address, router_abi, client.clone());
-
-    info!("📍 Using {} Router: {}", config.pool_type.display_name(), config.get_router_address());
 
     Ok(contract)
 }

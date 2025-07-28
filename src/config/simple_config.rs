@@ -141,7 +141,7 @@ impl PoolType {
     pub fn get_router_address(&self) -> &'static str {
         match self {
             PoolType::UniswapV2 | PoolType::PancakeSwapV2 => "0x10ED43C718714eb63d5aA57B78B54704E256024E", // PancakeSwap V2 Router
-            PoolType::UniswapV3 | PoolType::PancakeSwapV3 => "0x13f4EA83D0bd40E75C8222255bc855a974568Dd4", // PancakeSwap V3 Smart Router
+            PoolType::UniswapV3 | PoolType::PancakeSwapV3 => "0x1b81D678ffb9C0263b24A97847620C99d213eB14", // PancakeSwap V3 SwapRouter
             PoolType::OneInch => "0x111111125421ca6dc452d289314280a0f8842a65", // 1inch Aggregation Router V5
         }
     }
@@ -257,7 +257,6 @@ pub struct MevMakerTraits {
 }
 
 impl MevConfig {
-    /// Load MEV configuration from JSON file
     pub fn load_from_file(path: &str) -> Result<Self> {
         let content = fs::read_to_string(path)?;
         let config: MevConfig = serde_json::from_str(&content)?;
@@ -369,65 +368,5 @@ impl MevOneInchOrder {
         };
 
         Ok(format!("0x{:064x}", vs))
-    }
-}
-
-impl OneInchOrder {
-    /// Format making amount for display
-    pub fn format_making_amount(&self) -> String {
-        let amount = self.making_amount.parse::<f64>().unwrap_or(0.0) / 1e18;
-        format!("{:.6}", amount)
-    }
-
-    /// Format taking amount for display
-    pub fn format_taking_amount(&self) -> String {
-        let amount = self.taking_amount.parse::<f64>().unwrap_or(0.0) / 1e18;
-        format!("{:.6}", amount)
-    }
-
-    /// Format amount for display
-    pub fn format_amount(&self) -> String {
-        let amount = self.amount.parse::<f64>().unwrap_or(0.0) / 1e18;
-        format!("{:.6}", amount)
-    }
-
-    /// Format expected amount out for display
-    pub fn format_expected_amount_out(&self) -> String {
-        let amount = self.expected_amount_out.parse::<f64>().unwrap_or(0.0) / 1e18;
-        format!("{:.6}", amount)
-    }
-
-    /// Format expected remaining amount for display
-    pub fn format_expected_remaining_amount(&self) -> String {
-        let amount = self.expected_remaining_amount.parse::<f64>().unwrap_or(0.0) / 1e18;
-        format!("{:.6}", amount)
-    }
-
-    /// Get order path (maker_asset -> taker_asset)
-    pub fn get_path(&self) -> Vec<String> {
-        vec![self.maker_asset.clone(), self.taker_asset.clone()]
-    }
-
-    /// Get 1inch router address
-    pub fn get_router_address(&self) -> &'static str {
-        "0x111111125421ca6dc452d289314280a0f8842a65"
-    }
-
-    /// Compare actual result with expected amount out
-    pub fn compare_result(&self, actual_amount_out: &str) -> ComparisonResult {
-        let expected = self.expected_amount_out.parse::<f64>().unwrap_or(0.0);
-        let actual = actual_amount_out.parse::<f64>().unwrap_or(0.0);
-        let difference_pct = if expected > 0.0 {
-            ((actual - expected) / expected * 100.0).abs()
-        } else {
-            0.0
-        };
-
-        ComparisonResult {
-            expected,
-            actual,
-            difference_pct,
-            is_within_tolerance: difference_pct < 1.0, // 1% tolerance
-        }
     }
 }
